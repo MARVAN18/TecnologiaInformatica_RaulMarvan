@@ -1,6 +1,8 @@
 # Repositorio para la asignatura de Tecnología Informática UASLP
 Tecnologia Informatica
+
 Universidad Autónoma de San Luis Potosí
+
 Raúl Marván Medina
 
 ## Tarea Raiz
@@ -11,6 +13,7 @@ Practica realizada durante la clase Alumnos
 
 ## Base de datos Alumnos (Varios)
 Proyecto en el que se ha estado trabajando durante varias clases, con la base de datos alumnos en JSON, las rutas, AJAX y Jquery
+
 Se ha ido agregando código durante estas semanas.
 
 ## Ejercicio Jquery POST
