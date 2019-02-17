@@ -10,27 +10,27 @@ var db = {
     //Indicar BD o abrir conexion
     initDB: function () {
         var fs = require("fs");
-        var contents = fs.readFileSync("./alumnos.json");
-        this.alumnos = JSON.parse(contents);
+        var contents = fs.readFileSync("./usuarios.json");
+        this.usuarios = JSON.parse(contents);
     },
 
-    //Busqueda Alumno
-    getAlumnoBy: function (filter, value) {
+    //Busqueda Usuario
+    getUsuarioBy: function (filter, value) {
         console.log("filtro: " + filter + "valor: " + value);
         var selected = null;
-        this.alumnos.forEach(alumno => {
-            console.log(alumno);
-            console.log(alumno[filter]);
-            if (alumno[filter] == value) {
-                selected = alumno;
+        this.usuarios.forEach(usuario => {
+            console.log(usuario);
+            console.log(usuario[filter]);
+            if (usuario[filter] == value) {
+                selected = usuario;
                 return selected;
             }
         });
         return selected;
     },
 
-    saveAlumnos : function(){
-      archivos.writeFileSync('alumnos.json', JSON.stringify(this.alumnos),
+    saveUsuarios : function(){
+      archivos.writeFileSync('usuarios.json', JSON.stringify(this.usuarios),
         function (error) {
             if (error) {
                 console.log('Hubo un error al escribir en el archivo')
@@ -48,25 +48,25 @@ app.get('/',function(req,res){
   res.sendfile("index.html" );
 });
 
-app.get('/alumnos', (req, res) => {
+app.get('/usuarios', (req, res) => {
   db.initDB();
-  res.json(db.alumnos);
+  res.json(db.usuarios);
 });
 
-app.get('/alumnos/:clave', (req, res) => {
+app.get('/usuario/:email', (req, res) => {
   db.initDB();
-  var clave = req.params.clave;
-  var alumno = db.getAlumnoBy('clave', clave);
-  res.json(alumno);
+  var email = req.params.email;
+  var usuario = db.getUsuarioBy('email', email);
+  res.json(usuario);
 });
 
-app.post('/alumnos',function(req,res){
+app.post('/usuarios',function(req,res){
   db.initDB();
-  var alumno = req.body;
+  var usuario = req.body;
   console.log("Objeto post recibido");
-  console.log(alumno);
-  db.alumnos.push(alumno);
-  db.saveAlumnos();
+  console.log(usuario);
+  db.usuarios.push(usuario);
+  db.saveUsuarios();
   res.json({'status' : 'OK'});
 });
 

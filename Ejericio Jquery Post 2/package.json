@@ -1,18 +1,15 @@
 {
   "name": "exc05",
   "version": "1.0.0",
-  "description": "Ejercicio Express,Jquery,POST,GET",
+  "description": "Ejercicio POST",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "ejercicio",
-    "practica",
-    "express",
-    "node"
+    "ejercicio"
   ],
-  "author": "L. Guillermo Canto",
+  "author": "Raul Marvan Medina",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",

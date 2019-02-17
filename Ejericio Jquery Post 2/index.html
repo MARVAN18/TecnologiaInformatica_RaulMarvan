@@ -8,10 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <h3>Ejercicio Node, Express, Jquery</h3>
+    <h3>Ejercicio POST</h3>
     <form action="">
-        <input type="text" placeholder="Nombre" name="nombre" id="nombre">
-        <input type="text" placeholder="Clave" name="clave" id="clave">
+        <input type="text" placeholder="email" name="email" id="email">
+        <input type="password" placeholder="pass" name="pass" id="pass">
         <button id="act" type="button"> Enviar </button>
     </form>
 </body>
@@ -22,11 +22,11 @@
         //Programacion del boton act para obtener datos del input.
         $("#act").on("click", function(event){
             console.log(event);
-            var alumno = { }; //Creacion de objeto con la info necesaria.
-            alumno.nombre = $("#nombre").val();
-            alumno.clave = $("#clave").val();
+            var usuario = { }; //Creacion de objeto con la info necesaria.
+            usuario.nombre = $("#email").val();
+            usuario.clave = $("#pass").val();
             //Invocamos a la funcion para llamadas post y mandamos el obeto.
-            sendPOSTRequest(alumno);
+            sendPOSTRequest(usuario);
         });
 
     });
@@ -36,9 +36,9 @@
         console.log("Objeto enviado por POST: " );
         console.log(body_object);
         
-        $.post("http://localhost:3000/alumnos", JSON.stringify(body_object) , 
+        $.post("http://localhost:3000/usuarios", JSON.stringify(body_object) , 
         function(){
-            alert("Alumno guardado.");
+            alert("Usuario guardado.");
         });
     }
 
