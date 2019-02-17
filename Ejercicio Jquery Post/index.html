@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <body>
+    <h1>Ejercicio 2 con Node jquery</h1>
+    <br>
+    <div id="contenido"></div>
+    <br>
+    <!--<form action="/user" method="post"> -->
+        <form action="">
+        <label>Clave Alumno</label>
+        <input name="clave" id="clave" type="number"/>
+        <label>Nombre</label>
+        <input name="nombre" id="nombre" type="text"/><br>
+        <input id="enviar" type="submit" value="Enviar"/>
+    </form>
+    <br>
+    <footer>Fin del Documento</footer>
+    <br>
+    </body>
+
+    <script>
+        //   D O C U M E N T    R E A D Y
+        $(document).ready(function(){
+            console.log("Ready!");
+            $("#contenido").html("Hola Mundo JQuery");
+            $("#enviar").on("click",function(event){
+                console.log(event);
+                var alumno = {};
+                alumno.nombre = $("#nombre").val();
+                alumno.clave = $("#clave").val();
+
+                sendPostRequest(alumno);
+            });
+        });
+
+        function sendPostRequest(body_object){
+            $.post("http://localhost:3000/alumnos", body_object, 
+            function(){                
+                alert("Alumno registrado");
+            });
+        }
+    </script>
+</html>
