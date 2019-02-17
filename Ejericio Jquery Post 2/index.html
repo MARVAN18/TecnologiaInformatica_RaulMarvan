@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pagina de prueba</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <h3>Ejercicio Node, Express, Jquery</h3>
+    <form action="">
+        <input type="text" placeholder="Nombre" name="nombre" id="nombre">
+        <input type="text" placeholder="Clave" name="clave" id="clave">
+        <button id="act" type="button"> Enviar </button>
+    </form>
+</body>
+
+<script>
+    //cunado el documento este listo y todos los objetos 
+    $(document).ready( function(){
+        //Programacion del boton act para obtener datos del input.
+        $("#act").on("click", function(event){
+            console.log(event);
+            var alumno = { }; //Creacion de objeto con la info necesaria.
+            alumno.nombre = $("#nombre").val();
+            alumno.clave = $("#clave").val();
+            //Invocamos a la funcion para llamadas post y mandamos el obeto.
+            sendPOSTRequest(alumno);
+        });
+
+    });
+
+    function sendPOSTRequest(body_object){
+        //Llamada post al backend usando jquery.
+        console.log("Objeto enviado por POST: " );
+        console.log(body_object);
+        
+        $.post("http://localhost:3000/alumnos", JSON.stringify(body_object) , 
+        function(){
+            alert("Alumno guardado.");
+        });
+    }
+
+</script>
+</html>
