@@ -39,12 +39,22 @@ var db = {
                 console.log(error);
             }
         });
-    }
-    
+    },
+
+    removeUsuarios : function (email, callback) {
+      this.usuarios.deleteOne({email: ObjectId(email)}, callback);
+      archivos.writeFileSync('usuarios.json', JSON.stringify(this.usuarios),
+      function (error) {
+          if (error) {
+              console.log('Hubo un error al escribir en el archivo')
+              console.log(error);
+          }
+      });
+    },    
 }
 
 app.get('/',function(req,res){
-  res.sendfile("index.html" );
+  res.sendFile('index.html' , { root : __dirname});
 });
 
 app.get('/usuarios', (req, res) => {
@@ -57,6 +67,15 @@ app.get('/usuario/:email', (req, res) => {
   var email = req.params.email;
   var usuario = db.getUsuarioBy('email', email);
   res.json(usuario);
+});
+
+//DELETE
+app.delete('/usuarios/:email',function(req,res){
+  db.initDB();
+  var emaild = req.body.email;
+  //db.usuarios.pop(usuario);
+  db.removeUsuarios(emaild);
+  res.json({'status' : 'OK'});
 });
 
 app.post('/usuarios',function(req,res){

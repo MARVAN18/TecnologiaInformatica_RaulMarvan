@@ -14,11 +14,17 @@
         <input type="password" placeholder="pass" name="pass" id="pass">
         <button id="act" type="button"> Enviar </button>
     </form>
+    </br></br>
+    <h3>Ejercicio DELETE</h3>
+    <form action="">
+        <input type="text" placeholder="email" name="emaild" id="emaild">
+        <button id="act2" type="button"> Eliminar </button>
+    </form>
 </body>
 
 <script>
     //cunado el documento este listo y todos los objetos 
-    $(document).ready( function(){
+    jQuery(document).ready( function($){
         //Programacion del boton act para obtener datos del input.
         $("#act").on("click", function(event){
             console.log(event);
@@ -27,6 +33,14 @@
             usuario.pass = $("#pass").val();
             //Invocamos a la funcion para llamadas post y mandamos el obeto.
             sendPOSTRequest(usuario);
+        });
+
+        $("#act2").on("click", function(event){
+            console.log(event);
+            var usuario = { }; //Creacion de objeto con la info necesaria.
+            usuario.email = $("#emaild").val();
+            //Invocamos a la funcion para llamadas post y mandamos el obeto.
+            sendDELETERequest(usuario);
         });
 
     });
@@ -39,6 +53,13 @@
         $.post("http://localhost:3000/usuarios", body_object , 
         function(){
             alert("Usuario guardado.");
+        });
+    }
+
+    function sendDELETERequest(body_object){        
+        $.delete("http://localhost:3000/usuarios/", body_object , 
+        function(){
+            alert("Usuario eliminado.");
         });
     }
 
