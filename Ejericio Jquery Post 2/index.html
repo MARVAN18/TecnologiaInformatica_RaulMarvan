@@ -23,8 +23,8 @@
         $("#act").on("click", function(event){
             console.log(event);
             var usuario = { }; //Creacion de objeto con la info necesaria.
-            usuario.nombre = $("#email").val();
-            usuario.clave = $("#pass").val();
+            usuario.email = $("#email").val();
+            usuario.pass = $("#pass").val();
             //Invocamos a la funcion para llamadas post y mandamos el obeto.
             sendPOSTRequest(usuario);
         });
@@ -36,7 +36,7 @@
         console.log("Objeto enviado por POST: " );
         console.log(body_object);
         
-        $.post("http://localhost:3000/usuarios", JSON.stringify(body_object) , 
+        $.post("http://localhost:3000/usuarios", body_object , 
         function(){
             alert("Usuario guardado.");
         });

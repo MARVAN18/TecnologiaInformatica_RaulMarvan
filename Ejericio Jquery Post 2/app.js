@@ -4,6 +4,8 @@ var app = express();
 
 const archivos = require('fs');
 
+app.use(bodyParser.urlencoded({extenden:false}));
+app.use(bodyParser.json());
 
 //DB Handler
 var db = {
@@ -40,9 +42,6 @@ var db = {
     }
     
 }
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.get('/',function(req,res){
   res.sendfile("index.html" );
