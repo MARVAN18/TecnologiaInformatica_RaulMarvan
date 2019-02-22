@@ -24,3 +24,6 @@ Segunda entrega de la tarea a partir del codigo proporcionado por el profesor.
 
 ## Tarea Eliminación
 Entrega de la tarea a partir del codigo proporcionado por el profesor para eliminar a un Usuario
+
+## Tarea Put
+Entrega de la tarea a partir del codigo proporcionado por el profesor para editar a un Usuario
