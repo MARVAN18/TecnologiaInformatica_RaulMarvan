@@ -21,3 +21,6 @@ Primer intento de entrega de tarea de Jquery Post con Alumnos
 
 ## Ejercicio Jquery POST 2
 Segunda entrega de la tarea a partir del codigo proporcionado por el profesor.
+
+## Tarea Eliminación
+Entrega de la tarea a partir del codigo proporcionado por el profesor para eliminar a un Usuario
