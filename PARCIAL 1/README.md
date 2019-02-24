@@ -30,8 +30,8 @@ Código proporcionado por el profesor
 
 ## Programa Final Usuarios
 Entrega final del programa desarrollado en clase enfocado a Usuarios con email y contraseña.
-    *Inserción
-    *Edición
-    *Eliminación
-    *Estilo
-    *API
+    * Inserción
+    * Edición
+    * Eliminación
+    * Estilo
+    * API
