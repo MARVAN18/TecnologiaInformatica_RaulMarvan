@@ -1,7 +1,4 @@
-# Repositorio para la asignatura de Tecnología Informática UASLP
-Tecnologia Informatica
-
-Universidad Autónoma de San Luis Potosí
+# PARCIAL 1
 
 Raúl Marván Medina
 
