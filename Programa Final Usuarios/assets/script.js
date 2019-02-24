@@ -1,57 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tarea Tecnologia Informatica</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    
-
-</head>
-<body>
-        <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            Ejercico de Eliminacion
-        </a>
-        </nav>
-    <div class="container">
-    <h3 class="display-3">Tarea Tecnologia Informatica</h3></br></br>
-    <form action="">
-        <input type="text" placeholder="Email" name="email" id="email">
-        <input type="password" placeholder="Contraseña" name="pass" id="pass">
-        <button id="act" type="button"> Agregar </button>
-    </form>
-<br>
-<div class="clear"></div>
-    <div>
-        <h4> U S U A R I O S </h4>
-
-        <table class="table table-sm table-bordered">
-                <thead class="bg-yellow">
-                  <tr>
-                    <th scope="col">Email</th>
-                    <th scope="col">Contraseña</th>
-                    <th scope="col">Modificar</th>
-                    <th scope="col">Eliminar</th>
-                  </tr>
-                </thead>
-                <tbody id="usrTable">
-                  
-                </tbody>
-              </table>
-
-    </div>
-
-</div>    
-</body>
-
-<script>
-    //cunado el documento este listo y todos los objetos 
     $(document).ready( function(){
 
         //Una vez que este listo el documento obtendremos la lista de usuarios y la mostraremos.
@@ -65,6 +11,26 @@
             usuario.pass = $("#pass").val();
             //Invocamos a la funcion para llamadas post y mandamos el obeto.
             sendPOSTRequest(usuario);
+        });
+
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // el botton que invoca al modal
+            var email = button.data('email'); //  data-* attributes
+            var pass = button.data('pass');
+            // se puede realizar una busqueda del objeto usando la misma API si tuviera mas propiedades.
+            var modal = $(this);
+            modal.find('.modal-title').text('Edicion del Usuario: ' + email);
+            modal.find('.modal-body input#emailEdit').val(email);
+            modal.find('.modal-body input#passEdit').val(pass);
+            modal.find('.modal-footer button#SaveEdit').unbind().on('click', (event)=>{
+                console.log("Guardando Usuario: " + email);
+                var emailNew =  modal.find('.modal-body input#emailEdit').val();
+                var passNew =  modal.find('.modal-body input#passEdit').val();
+                var usuario = {'passOld' : pass, 'passNew' : passNew , 'emailNew' : emailNew };
+                console.log(usuario);
+                sendPUTRequest(usuario);
+                modal.modal('hide');
+            });
         });
 
     });
@@ -81,7 +47,7 @@
                 listHTML += "<tr>" +                            
                             "<td>"+ usuario.email + "</td>  " +
                             "<td>"+ usuario.pass + "</td>  " +
-                            "<td><button type='button' class='update btn btn-sm '  data-email='"+ usuario.email +"'> <i class='material-icons'>edit</i> </button></td>" + 
+                            "<td><button type='button' class='edit btn btn-sm' data-pass='"+ usuario.pass +"' data-email='" + usuario.email + "' data-toggle='modal' data-target='#editModal'> <i class='material-icons'> edit </i> </button></td> " +
                             "<td><button type='button' class='delete btn btn-sm' data-email='"+ usuario.email +"'> <i class='material-icons'>delete</i> </button></td>" + 
                             "</tr>";
             });
@@ -92,13 +58,6 @@
                 console.log("Button delete");
                 console.log(event.target);
                 sendDELETERequest({ "email" : event.target.dataset["email"] });
-            });
-
-            //Programacion para los botones update
-            $(".update").on("click", (event) =>{
-                console.log("Button update");
-                console.log(event.target);
-                sendUPDATERequest({ "email" : event.target.dataset["email"], "emailN": $("#email").html(), "passN": $("#pass").html() });
             });
         });
     }
@@ -132,22 +91,19 @@
             getUsuarios();
     }
 
-    function sendUPDATERequest(body_object) {
+    function sendPUTRequest(body_object) {
         //Llamada update al backend por medio de jquery
 
         $.ajax({
             method: "PUT",
-            url: "http://localhost:3000/usuarios/:email",
+            url: "http://localhost:3000/usuarios",
             data: body_object
             })
-            .done(function( msg ) {
-                alert( "Usuario editado: " + body_object.email );
+            .done(function( msg ) { 
+                alert( "Usuario editado: " + body_object.emailOld );
             })
             .fail(function(msg){
-                alert("Error al editar usuario: " + body_object.email)
+                alert("Error al editar usuario: " + body_object.emailOld)
             }); 
             getUsuarios();
     }
-
-</script>
-</html>

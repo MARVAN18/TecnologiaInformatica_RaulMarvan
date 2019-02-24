@@ -56,6 +56,20 @@ var db = {
         db.usuarios.splice(index, 1);
         db.saveUsuarios();
       }
+    },
+    
+    editUsuario : function(usuario){
+      //Buscamos el indice del usuario
+      for (var index = 0; index < this.usuarios.length; index++) {
+        if(this.usuarios[index].email == usuario.emailOld ){
+          console.log("Usuario encontrado.");
+          this.usuarios[index].email = usuario.emailOld;
+          this.usuarios[index].pass = usuario.passNew;
+          break;
+        }
+      }
+      console.log(this.usuarios)
+      db.saveUsuarios();
     }
     
 }
@@ -90,6 +104,14 @@ app.route("/usuarios")
     db.deleteAlumnoByEmail( usuario.email);
     console.log(db.usuarios);
     res.json({'status' : 'OK'})
+  })
+  .put((req,res)=>{
+    db.initDB();
+    var usuario = req.body;
+    console.log("Objeto put recibido");
+    console.log(usuario);
+    db.editUsuario(usuario);
+    res.json({'status' : 'OK'})
   });
 
   app.get('/usuario/:email', (req, res) => {
@@ -97,19 +119,6 @@ app.route("/usuarios")
     var email = req.params.email;
     var usuario = db.getUsuarioBy('email', email);
     res.json(usuario);
-  });
-
-  app.put('/usuario/:email',(req,res) => {
-    //
-    db.initDB();
-    var email = req.params.emailN;
-    var pass = req.params.passN;
-    
-    console.log("Objeto post recibido");
-    console.log(usuario);
-    db.deleteAlumnoByEmail( usuario.email);
-    console.log(db.usuarios);
-    res.json({'status' : 'OK'})
   });
 
 app.listen(3000,function(){
