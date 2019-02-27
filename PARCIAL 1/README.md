@@ -1,7 +1,4 @@
-# Repositorio para la asignatura de Tecnología Informática UASLP
-Tecnologia Informatica
-
-Universidad Autónoma de San Luis Potosí
+# PARCIAL 1
 
 Raúl Marván Medina
 
@@ -27,3 +24,15 @@ Entrega de la tarea a partir del codigo proporcionado por el profesor para elimi
 
 ## Tarea Put
 Entrega de la tarea a partir del codigo proporcionado por el profesor para editar a un Usuario
+
+## Tarea Edicion
+Código proporcionado por el profesor
+
+## Programa Final Usuarios
+Entrega final del programa desarrollado en clase enfocado a Usuarios con email y contraseña.
+
+* Inserción
+* Edición
+* Eliminación
+* Estilo
+* API
