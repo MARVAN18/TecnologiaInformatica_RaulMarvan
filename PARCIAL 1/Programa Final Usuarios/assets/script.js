@@ -26,7 +26,7 @@
                 console.log("Guardando Usuario: " + email);
                 var emailNew =  modal.find('.modal-body input#emailEdit').val();
                 var passNew =  modal.find('.modal-body input#passEdit').val();
-                var usuario = {'passOld' : pass, 'passNew' : passNew , 'emailNew' : emailNew };
+                var usuario = {'passOld' : pass, 'passNew' : passNew , 'emailOld': email,'emailNew' : emailNew };
                 console.log(usuario);
                 sendPUTRequest(usuario);
                 modal.modal('hide');

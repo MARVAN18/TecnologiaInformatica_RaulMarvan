@@ -63,7 +63,7 @@ var db = {
       for (var index = 0; index < this.usuarios.length; index++) {
         if(this.usuarios[index].email == usuario.emailOld ){
           console.log("Usuario encontrado.");
-          this.usuarios[index].email = usuario.emailOld;
+          this.usuarios[index].email = usuario.emailNew;
           this.usuarios[index].pass = usuario.passNew;
           break;
         }
