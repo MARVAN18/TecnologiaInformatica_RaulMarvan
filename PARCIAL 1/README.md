@@ -36,3 +36,6 @@ Entrega final del programa desarrollado en clase enfocado a Usuarios con email y
 * Eliminación
 * Estilo
 * API
+
+## EXAMEN\INSTAGRAPP
+Examen de Parcial I. Consumir de API de Instagram mediante NODE.
