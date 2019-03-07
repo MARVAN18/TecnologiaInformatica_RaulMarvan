@@ -31,7 +31,7 @@
   <div class="card-body">
     <h1 class="card-title h5"> FOTOS RECIENTES </h1>
     <% media.forEach(function( m ) { %>
-      <img src="<%= m.images.thumbnail.url %>" />
+      <img src="<%= m.images.thumbnail.url %>" style="width: 5%;"/>
       <div class="card-body">
         <p>Subida por <%= m.user.full_name %></p>
         <p class="text-muted"><%= formatDate(m.created_time) %></p>
