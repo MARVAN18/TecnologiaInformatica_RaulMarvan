@@ -13,3 +13,7 @@ Investigación por equipo sobre las herramientas digitales para Scrum, Kanban
 
 ## Kanban Boards
 Tarea por equipo sobre las herramientas Kanbanflow y Kanbantool
+
+## Scrum Herramientas
+Tarea por equipo sobre las plataformas de Scrum
+
